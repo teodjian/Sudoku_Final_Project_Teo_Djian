@@ -48,7 +48,7 @@
     <Compile Include="Kelet.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Slover.cs" />
+    <Compile Include="Solver.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
