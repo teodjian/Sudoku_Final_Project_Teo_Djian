@@ -43,8 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Board_Game.cs" />
+    <Compile Include="InputExepction.cs" />
+    <Compile Include="Kelet.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Slover.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
