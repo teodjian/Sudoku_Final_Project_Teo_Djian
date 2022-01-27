@@ -16,6 +16,10 @@ namespace Sudoku_Final_Project
         {
 
         }
+        public InputException(Exception e) : base(message_menu())
+        {
+
+        }
         public InputException(char chr, int length) : base(modifymessage(chr, length))
         {
 
@@ -23,6 +27,10 @@ namespace Sudoku_Final_Project
         public static string modifymessage()
         {
             return "Invalid Input Exception: found the same number twice in an element (row, column, box)";
+        }
+        public static string message_menu()
+        {
+            return "Invalid Input Exception: it is not a number from 1 to 3";
         }
         public static string modifymessage(int length)
         {

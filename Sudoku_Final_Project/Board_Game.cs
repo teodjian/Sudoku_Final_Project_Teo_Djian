@@ -12,8 +12,11 @@ namespace Sudoku_Final_Project
         private int _size { get; set; }
         public Board_Game(int size)
         {
-
             _size = size;
+        }
+        public Board_Game()
+        {
+            
         }
         //sets the color of the text to white or green, used in displaying the board.
         private void color(bool flag)
@@ -120,6 +123,20 @@ namespace Sudoku_Final_Project
             }
             Console.WriteLine("|\n\n");
             color(false);
+        }
+        public void init_board(int[,] matrix_board, int size_board, string sudoku)
+        {
+            char[] chars = sudoku.ToCharArray();
+            for (int i = 0; i < size_board; i++)
+            {
+                int k = i * size_board;
+                for (int j = 0; j < size_board; j++, k++)
+                {
+                    matrix_board[i, j] = chars[k] - '0';
+
+                }
+            }
+            displayboard(matrix_board);
         }
     }
 }

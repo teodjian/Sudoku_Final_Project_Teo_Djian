@@ -10,34 +10,16 @@ namespace Sudoku_Final_Project
         {
             public void solveSudoku(int[,] board)
             {
-                if (board == null || board.Length == 0)
-                    return;
-
-                board = chattoint(board);
                 Boolean sloved = solve(board);
                 if (!sloved)
                     Console.WriteLine("the board is not correct");
 
             }
-            private static int[,] chattoint(int[,] board)
-            {
-                for (int i = 0; i < board.GetLength(0); i++)
-                {
-                    for (int j = 0; j < board.GetLength(1); j++)
-                    {
-                        if (board[i, j] >= '0' && board[i, j] <= '9')
-                        {
-                            board[i, j] = board[i, j] - '0';
-                        }
-                        if (board[i, j] == '.')
-                            board[i, j] = 0;
-                    }
-                }
-                return board;
-            }
             private static bool solve(int[,] board)
             {
-                for (int i = 0; i < board.GetLength(0); i++)
+               Board_Game class1 = new Board_Game(board.GetLength(0));
+               //class1.displayboard(board);
+               for (int i = 0; i < board.GetLength(0); i++)
                 {
                     for (int j = 0; j < board.GetLength(1); j++)
                     {
@@ -65,7 +47,7 @@ namespace Sudoku_Final_Project
                         }
                     }
                 }
-                Board_Game class1 = new Board_Game(board.GetLength(0));
+               
                 class1.displayboard(board);
                 return true;
             }
