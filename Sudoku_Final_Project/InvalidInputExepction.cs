@@ -6,25 +6,26 @@ using System.Threading.Tasks;
 
 namespace Sudoku_Final_Project
 {
-    class InputException : Exception
+    class InvalidInputException : Exception
     {
-        public InputException() : base(modifymessage())
+        public InvalidInputException() : base(message())
         {
+            Console.WriteLine(message());
+        }
+        public InvalidInputException(char chr, int length) : base(message(chr, length))
+        {
+            Console.WriteLine(message(chr, length));
+            
 
         }
-        public InputException(int length) : base(modifymessage(length))
+        public InvalidInputException(int length) : base(message(length))
         {
-
         }
-        public InputException(Exception e) : base(message_menu())
+        public InvalidInputException(Exception e) : base(message_menu())
         {
-
+            
         }
-        public InputException(char chr, int length) : base(modifymessage(chr, length))
-        {
-
-        }
-        public static string modifymessage()
+        public static string message()
         {
             return "Invalid Input Exception: found the same number twice in an element (row, column, box)";
         }
@@ -32,11 +33,11 @@ namespace Sudoku_Final_Project
         {
             return "Invalid Input Exception: it is not a number from 1 to 3";
         }
-        public static string modifymessage(int length)
+        public static string message(int length)
         {
             return "Invalid Input Exception: " + length.ToString() + " is not a valid length.";
         }
-        public static string modifymessage(char chr, int length)
+        public static string message(char chr, int length)
         {
             return "Invalid Input Exception: " + chr + " is not a valid key for length " + length.ToString();
         }

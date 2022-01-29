@@ -44,7 +44,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Board_Game.cs" />
-    <Compile Include="InputExepction.cs" />
+    <Compile Include="Board_Game_UI.cs" />
+    <Compile Include="Board_slover.cs" />
+    <Compile Include="InvalidInputExepction.cs" />
     <Compile Include="Kelet.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

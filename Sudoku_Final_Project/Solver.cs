@@ -17,7 +17,7 @@ namespace Sudoku_Final_Project
             }
             private static bool solve(int[,] board)
             {
-               Board_Game class1 = new Board_Game(board.GetLength(0));
+               Board_Game_UI class1 = new Board_Game_UI(board.Length,board,board.GetLength(0));
                //class1.displayboard(board);
                for (int i = 0; i < board.GetLength(0); i++)
                 {
