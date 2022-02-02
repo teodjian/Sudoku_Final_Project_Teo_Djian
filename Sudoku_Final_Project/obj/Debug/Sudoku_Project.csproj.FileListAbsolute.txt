@@ -1,0 +1,7 @@
+E:\C#\Sudoku_Final_Project\Sudoku_Final_Project\bin\Debug\Sudoku_Final_Project.exe.config
+E:\C#\Sudoku_Final_Project\Sudoku_Final_Project\bin\Debug\Sudoku_Final_Project.exe
+E:\C#\Sudoku_Final_Project\Sudoku_Final_Project\bin\Debug\Sudoku_Final_Project.pdb
+E:\C#\Sudoku_Final_Project\Sudoku_Final_Project\obj\Debug\Sudoku_Project.csproj.CoreCompileInputs.cache
+E:\C#\Sudoku_Final_Project\Sudoku_Final_Project\obj\Debug\Sudoku_Final_Project.exe
+E:\C#\Sudoku_Final_Project\Sudoku_Final_Project\obj\Debug\Sudoku_Final_Project.pdb
+E:\C#\Sudoku_Final_Project\Sudoku_Final_Project\obj\Debug\Sudoku_Project.csproj.AssemblyReference.cache

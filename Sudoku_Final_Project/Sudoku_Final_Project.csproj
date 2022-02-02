@@ -45,12 +45,19 @@
   <ItemGroup>
     <Compile Include="Board_Game.cs" />
     <Compile Include="Board_Game_UI.cs" />
-    <Compile Include="Board_slover.cs" />
-    <Compile Include="InvalidInputExepction.cs" />
+    <Compile Include="Board_Solver.cs" />
+    <Compile Include="Cell.cs" />
+    <Compile Include="Exepction\InvalidBoardSizeException.cs" />
+    <Compile Include="Exepction\InvalidKeyException.cs" />
+    <Compile Include="ICell.cs" />
+    <Compile Include="Exepction\InvalidInputExepction.cs" />
     <Compile Include="Kelet.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Solver.cs" />
+    <Compile Include="Solver1.cs" />
+    <Compile Include="Validation\Ivalid.cs" />
+    <Compile Include="Validation\Validation_Input.cs" />
+    <Compile Include="Validation\Validation_Of_Board.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

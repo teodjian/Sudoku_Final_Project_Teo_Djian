@@ -11,7 +11,7 @@ namespace Sudoku_Final_Project
             static void Main(string[] args)
             {
 
-                Slover slover = new Slover();
+                //Solver1 slover = new Solver1();
                 Kelet kelet = new Kelet();
 
                 var sudoku_4 = new int[,]
@@ -101,12 +101,11 @@ namespace Sudoku_Final_Project
 
                 kelet.main_menu();
                 //slover.solveSudoku(sudoku_444);
-                //slover.solveSudoku(sudoku);
+                //slover.solveSudoku(sudoku_166,0,0);
                 //slover.solveSudoku(sudoku);
             }
 
 
         }
     }
-
 

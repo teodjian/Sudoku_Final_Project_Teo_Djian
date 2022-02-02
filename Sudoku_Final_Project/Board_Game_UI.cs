@@ -9,10 +9,8 @@ namespace Sudoku_Final_Project
     class Board_Game_UI : Board_Game
     {
 
-        private int _size { get; set; }
-        public Board_Game_UI(int length_of_string, int[,] board_matrix, int length_of_row):base(length_of_string, board_matrix)
+        public Board_Game_UI(string str,int length_of_row) :base(str,length_of_row)
         {
-            _size = length_of_row;
         }
         public Board_Game_UI():base()
         {
@@ -26,24 +24,24 @@ namespace Sudoku_Final_Project
             else
                 Console.ForegroundColor = ConsoleColor.White;
         }
-        public void displayboard(int[,] board)
-        {
-            int placeInCell = (int)Math.Pow(_size, 0.5);
 
-            for (int i = 0; i < 3 * _size; i++)
+        // algorithm that print the board.
+        public override void displayboard()
+        {
+            for (int i = 0; i < 3 * _length_of_row; i++)
             {
 
-                for (int j = 0; j < 6 * _size; j++)
+                for (int j = 0; j < 6 * _length_of_row; j++)
                 {
                     color(false);
-                    if (i % (placeInCell * 3) == 0 && (j % (placeInCell * 6) == 0 || j % 6 != 0))
+                    if (i % (_numberOfPlacesInSquare * 3) == 0 && (j % (_numberOfPlacesInSquare * 6) == 0 || j % 6 != 0))
                         color(true);
-                    if (j % (placeInCell * 6) == 0)
+                    if (j % (_numberOfPlacesInSquare * 6) == 0)
                         color(true);
                     if (i == 0)
                     {
                         color(true);
-                        if (j == 6 * _size - 1)
+                        if (j == 6 * _length_of_row - 1)
                         {
                             color(true);
                             Console.WriteLine("_");
@@ -51,7 +49,7 @@ namespace Sudoku_Final_Project
                         else
                             Console.Write("_");
                     }
-                    else if (j == 6 * _size - 1)
+                    else if (j == 6 * _length_of_row - 1)
                     {
 
                         if (i % 3 == 0)
@@ -89,29 +87,30 @@ namespace Sudoku_Final_Project
                         {
                             if (j % 6 == 3)
                             {
-                                if (board[i / 3, j / 6] != null)
+                                if (_Cell_board[i / 3, j / 6].Value!=0)
                                 {
-                                    if (board[i / 3, j / 6] >= 10)
-                                        Console.Write(board[i / 3, j / 6]);
+                                    if (_Cell_board[i / 3, j / 6].Value >= 10)
+                                        Console.Write(_Cell_board[i / 3, j / 6].Value);
                                     else
-                                        Console.Write(board[i / 3, j / 6] + " ");
+                                        Console.Write(_Cell_board[i / 3, j / 6].Value + " ");
                                 }
                                 else
                                     Console.Write("  ");
                             }
-                        }
+                        }   
+
                         else
                             Console.Write(" ");
                     }
 
                 }
             }
-            for (int j = 0; j < _size * 6; j++)
+            for (int j = 0; j < _length_of_row * 6; j++)
             {
                 color(false);
                 if (j % 6 == 0)
                 {
-                    if (j % (6 * placeInCell) == 0)
+                    if (j % (6 * _numberOfPlacesInSquare) == 0)
                         color(true);
                     Console.Write("|");
                 }
@@ -123,20 +122,6 @@ namespace Sudoku_Final_Project
             }
             Console.WriteLine("|\n\n");
             color(false);
-        }
-        public void init_board(int[,] matrix_board, int size_board, string sudoku)
-        {
-            char[] chars = sudoku.ToCharArray();
-            for (int i = 0; i < size_board; i++)
-            {
-                int k = i * size_board;
-                for (int j = 0; j < size_board; j++, k++)
-                {
-                    matrix_board[i, j] = chars[k] - '0';
-
-                }
-            }
-            displayboard(matrix_board);
         }
     }
 }
