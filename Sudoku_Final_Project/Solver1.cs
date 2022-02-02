@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Sudoku_Final_Project
 {
-    class Solver1
+     class  Solver1
     {
-        Board_Game _board;
+        public Board_Game _board;
 
         public Solver1(Board_Game board)
         {
@@ -17,7 +17,8 @@ namespace Sudoku_Final_Project
         }
         public void solve()
         {
-            if (solveSudoku(0, 0))
+            Backtracking backtracking=new Backtracking(_board);
+            if(backtracking.Backtrackingsolve(0,0))
                 _board.displayboard();
             else
                 Console.WriteLine("can't solve this sudoku");

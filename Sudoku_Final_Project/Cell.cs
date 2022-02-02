@@ -70,7 +70,7 @@ namespace Sudoku_Final_Project
             return num;
         }
 
-        public bool IsSolved()
+        public bool HasValue()
         {
             return _value != 0;
         }

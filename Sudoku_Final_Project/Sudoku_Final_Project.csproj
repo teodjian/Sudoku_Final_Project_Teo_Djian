@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Tactics\Backtracking.cs" />
     <Compile Include="Board_Game.cs" />
     <Compile Include="Board_Game_UI.cs" />
     <Compile Include="Board_Solver.cs" />
@@ -55,6 +56,10 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Solver1.cs" />
+    <Compile Include="Tactics\HiddenSingle.cs" />
+    <Compile Include="Tactics\Masking_Tactic.cs" />
+    <Compile Include="Tactics\NakedSingle.cs" />
+    <Compile Include="Tactics\Options.cs" />
     <Compile Include="Validation\Ivalid.cs" />
     <Compile Include="Validation\Validation_Input.cs" />
     <Compile Include="Validation\Validation_Of_Board.cs" />

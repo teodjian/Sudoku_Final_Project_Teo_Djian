@@ -50,13 +50,12 @@ namespace Sudoku_Final_Project.Validation
 
         public bool AppearInBox(int num, int row, int col)
         {
-            int boxSize = (int)Math.Sqrt(_board._length_of_row);
-            int boxRow = row - (row % boxSize);
-            int boxCol = col - (col % boxSize);
+            int SquareRow = row - (row % _board._numberOfPlacesInSquare);
+            int SquareCol = col - (col % _board._numberOfPlacesInSquare);
             int count = 0;
-            for (int i = boxRow; i < boxRow + boxSize; i++)
+            for (int i = SquareRow; i < SquareRow + _board._numberOfPlacesInSquare; i++)
             {
-                for (int j = boxCol; j < boxCol + boxSize; j++)
+                for (int j = SquareCol; j < SquareCol + _board._numberOfPlacesInSquare; j++)
                 {
                     if (num == _board._Cell_board[i, j].Value)
                     {
@@ -83,15 +82,15 @@ namespace Sudoku_Final_Project.Validation
             {
                 for (int col = 0; col < _board._length_of_row; col++)
                 {
-                    Cell current = _board._Cell_board[row, col];
-                    if (!current.IsSolved())
+                    Cell thisCell = _board._Cell_board[row, col];
+                    if (!thisCell.HasValue())
                     {
-                        if (current.NumOfOptions == 0)
+                        if (thisCell.NumOfOptions == 0)
                         {
                             throw new InvalidInputException();
                         }
                     }
-                    else if (!ValidInPlace(current.Value, row, col))
+                    else if (!ValidInPlace(thisCell.Value, row, col))
                     {
                         throw new InvalidInputException();
                     }
