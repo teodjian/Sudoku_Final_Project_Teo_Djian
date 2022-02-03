@@ -1,4 +1,5 @@
-﻿using Sudoku_Final_Project.Validation;
+﻿using Sudoku_Final_Project.Tactics;
+using Sudoku_Final_Project.Validation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,11 +21,9 @@ namespace Sudoku_Final_Project
             _numberOfPlacesInSquare = (int)Math.Pow(size_of_row,0.5);
             _Cell_board = new Cell[_length_of_row, _length_of_row];
             init_board(board_str);
+            InitTheOptions();
         }
-        public Board_Game()
-        {
-
-        }
+        public abstract void displayboard();
 
         public void init_board(string board_str)
         {
@@ -40,7 +39,16 @@ namespace Sudoku_Final_Project
             displayboard();
             bs.Validate();
         }
+        public void RemoveAllOption(int option, int row, int col)
+        {
+            Options options = new Options(this);
+            options.RemoveOption(option, row, col);
+        }
+        public void InitTheOptions()
+        {
+            Options options = new Options(this);
+            options.FixAllOptions();
+        }
 
-        public abstract void displayboard();
     }
 }

@@ -14,7 +14,7 @@ namespace Sudoku_Final_Project
         {
             _board = board;
         }
-        public bool Backtrackingsolve(int row, int col)
+        public bool BacktrackingSolve(int row, int col)
         {
             if (row == _board._length_of_row - 1 && col == _board._length_of_row)
                 return true;
@@ -24,14 +24,14 @@ namespace Sudoku_Final_Project
                 col = 0;
             }
             if (_board._Cell_board[row, col].Value != 0)
-                return Backtrackingsolve(row, col + 1);
+                return BacktrackingSolve(row, col + 1);
 
             for (int num = 1; num < _board._length_of_row + 1; num++)
             {
                 if (isSafe(row, col, num))
                 {
                     _board._Cell_board[row, col].Value = num;
-                    if (Backtrackingsolve(row, col + 1))
+                    if (BacktrackingSolve(row, col + 1))
                         return true;
                 }
                 _board._Cell_board[row, col].Value = 0;

@@ -1,4 +1,5 @@
-﻿using Sudoku_Final_Project.Validation;
+﻿using Sudoku_Final_Project.Tactics;
+using Sudoku_Final_Project.Validation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,11 +18,21 @@ namespace Sudoku_Final_Project
         }
         public void solve()
         {
-            Backtracking backtracking=new Backtracking(_board);
-            if(backtracking.Backtrackingsolve(0,0))
+            _board.InitTheOptions();
+            HiddenSingle hiddenSingle = new HiddenSingle(_board);
+            Backtracking backtracking = new Backtracking(_board);
+            if (hiddenSingle.HiddenSingleSolve())
+                _board.displayboard();
+            else if (backtracking.BacktrackingSolve(0, 0))
                 _board.displayboard();
             else
+            {
+                _board.displayboard();
                 Console.WriteLine("can't solve this sudoku");
+            }
+                
+            //Backtracking backtracking=new Backtracking(_board);
+
         }
         public bool solveSudoku(int row, int col)
         {
