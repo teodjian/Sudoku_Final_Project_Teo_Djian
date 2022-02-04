@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Sudoku_Final_Project.Tactics
 {
-    class Masking_Tactic
+    interface Itactics
     {
+         bool tryToSolve();
     }
 }

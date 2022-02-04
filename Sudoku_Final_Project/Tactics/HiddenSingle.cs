@@ -6,89 +6,26 @@ using System.Threading.Tasks;
 
 namespace Sudoku_Final_Project.Tactics
 {
-    class HiddenSingle
+    class HiddenSingle: Itactics
     {
-        Board_Game _board;
+        public Board_Game _board { get; set; }
 
         public HiddenSingle(Board_Game board)
         {
             _board = board;
         }
-        
-        public bool HiddenSingleSolve()
+        public bool tryToSolve()
         {
-            int cnt = 0;
-            for (int i = 0; i < _board._length_of_row; i++)
-            {
-                for (int j = 0; j < _board._length_of_row; j++)
-                {
-                    Cell thisCell = _board._Cell_board[i, j];
-                    if (!thisCell.HasValue())
-                    {
-                        if (thisCell.NumOfOptions == 0)
-                        {
-                            return false;
-                        }
-                        foreach (int item in thisCell.GetOptions())
-                        {
-                            if (IsSingle(item, i, j))
-                            {
-                                cnt++;
-                                thisCell.SetValue(item);
-                                _board.RemoveAllOption(item, i, j);
-                                i = 0;
-                                j = 0;
-                                break;
-                            }
-                        }
-                    }
-                }
-            }
-            return cnt > 0;
+            return HiddenSingleSolve();
         }
 
-        private bool IsSingle(int num, int row, int col)
+        private bool Single(int num, int row, int col)
         {
-            return SingleInRow(num, row) || SingleInCol(num, col) || SingleInSquare(num, row, col);
-        }
-
-        private bool SingleInRow(int num, int row)
-        {
-            int cnt = 0;
-            for (int i = 0; i < _board._length_of_row; i++)
-            {
-                Cell thisCell = _board._Cell_board[row, i];
-                if (!thisCell.HasValue() && thisCell.GetOptions().Contains(num))
-                {
-                    cnt++;
-                    if (cnt > 1)
-                    {
-                        return false;
-                    }
-                }
-            }
-            return true;
-        }
-        private bool SingleInCol(int num, int col)
-        {
-            int cnt = 0;
-            for (int i = 0; i < _board._length_of_row; i++)
-            {
-                Cell thisCell = _board._Cell_board[i, col];
-                if (!thisCell.HasValue() && thisCell.GetOptions().Contains(num))
-                {
-                    cnt++;
-                    if (cnt > 1)
-                    {
-                        return false;
-                    }
-                }
-            }
-            return true;
+            return SingleIn_(num, row, "row") || SingleIn_(num, col, "col") || SingleInSquare(num, row, col);
         }
         private bool SingleInSquare(int num, int row, int col)
         {
-            int cnt = 0;
+            int counter = 0;
             int squareRow = row - (row % _board._numberOfPlacesInSquare);
             int squareCol = col - (col % _board._numberOfPlacesInSquare);
             for (int i = squareRow; i < squareRow + _board._numberOfPlacesInSquare; i++)
@@ -96,10 +33,10 @@ namespace Sudoku_Final_Project.Tactics
                 for (int j = squareCol; j < squareCol + _board._numberOfPlacesInSquare; j++)
                 {
                     Cell thisCell = _board._Cell_board[i, j];
-                    if (!thisCell.HasValue() && thisCell.GetOptions().Contains(num))
+                    if (!thisCell.HasValue() && thisCell.HasThisOption(num))
                     {
-                        cnt++;
-                        if (cnt > 1)
+                        counter++;
+                        if (counter > 1)
                         {
                             return false;
                         }
@@ -108,5 +45,61 @@ namespace Sudoku_Final_Project.Tactics
             }
             return false;
         }
+        public bool HiddenSingleSolve()
+        {
+            int counter = 0;
+            for (int i = 0; i < _board._length_of_row; i++)
+            {
+                for (int j = 0; j < _board._length_of_row; j++)
+                {
+                    Cell thisCell = _board._Cell_board[i, j];
+                    if (!thisCell.HasValue())
+                    {
+                        if (thisCell.NumOfOptions == 0)
+                            return false;
+                        foreach (int item in thisCell.GetOptions())
+                        {
+                            if (Single(item, i, j))
+                            {
+                                counter++;
+                                thisCell.Value = item;
+                                _board.RemoveTheOption(item, i, j);
+                                i = 0;
+                                j = 0;
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+            return (counter > 0);
+        }
+
+        // SingleIn_ depened in the string, if the string colOrrow is col so the function check if there is a single in col and if the string
+        // is row so the function check if there is a single in row
+        private bool SingleIn_(int num, int j, string colOrrow)
+        {
+            Cell thisCell = null;
+            int counter = 0;
+            for (int i = 0; i < _board._length_of_row; i++)
+            {
+                if (colOrrow.Equals("row"))
+                    thisCell = _board._Cell_board[j, i];
+
+                if (colOrrow.Equals("col"))
+                    thisCell = _board._Cell_board[i, j];
+
+                if (!thisCell.HasValue() && thisCell.HasThisOption(num))
+                {
+                    counter++;
+                    if (counter > 1)
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+       
     }
 }

@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace Sudoku_Final_Project.Exepction
 {
-    class InvalidInputException : Exception
+    class InvalidBoardInputException : Exception
     {
-        public InvalidInputException() : base(message())
+        public InvalidBoardInputException() : base(message())
         {
             Console.WriteLine(message());
         }
-        public InvalidInputException(string s) : base(message(s))
+        public InvalidBoardInputException(string s) : base(message(s))
         {
             Console.WriteLine(message(s));
         }

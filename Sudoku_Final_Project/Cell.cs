@@ -1,19 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Sudoku_Final_Project
 {
-    class Cell: ICell,ICloneable
+    class Cell: ICloneable
     {
-        public int _row { get; set; }
-        public int _col { get; set; }
-        public int _value { get; set; }
+        private int _row { get; set; }
+        private int _value;
         private HashSet<int> _options { get; set; }
+        private int _squareIndex;
 
-        public Cell(int value, int boardSize)
+        public Cell(int value, int boardSize,int row,int col,int SquareSize)
         {
             _value = value;
             _options = new HashSet<int>();
@@ -27,9 +24,11 @@ namespace Sudoku_Final_Project
                     }
                 }
             }
+            _row = row;
+            _squareIndex = SquareSize * (row / SquareSize) + col / SquareSize;
         }
 
-        public Cell(int value)
+        private Cell(int value)
         {
             _value = value;
         }
@@ -38,6 +37,10 @@ namespace Sudoku_Final_Project
         {
             get { return _value; }
             set { _value = value; }
+        }
+        public int squareIndex
+        {
+            get { return _squareIndex; }
         }
 
         public int NumOfOptions
@@ -55,9 +58,9 @@ namespace Sudoku_Final_Project
             _options.Remove(num);
         }
 
-        public void SetValue(int num)
+        public bool HasThisOption(int option)
         {
-            _value = num;
+            return _options.Contains(option);
         }
 
         public int GetOption()
@@ -66,6 +69,8 @@ namespace Sudoku_Final_Project
             foreach (int item in _options)
             {
                 num = item;
+                break;
+
             }
             return num;
         }
@@ -77,9 +82,9 @@ namespace Sudoku_Final_Project
 
         public object Clone()
         {
-            Cell sudokuCell = new Cell(this._value);
-            sudokuCell._options = new HashSet<int>(this._options);
-            return sudokuCell;
+            Cell ClonedCell = new Cell(this._value);
+            ClonedCell._options = new HashSet<int>(this._options);
+            return ClonedCell;
         }
     }
 

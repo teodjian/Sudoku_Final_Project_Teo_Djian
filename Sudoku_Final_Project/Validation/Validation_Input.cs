@@ -12,8 +12,8 @@ namespace Sudoku_Final_Project
     {
         public void validation(string sudoku_string)
         {
-            if (sudoku_string.Equals(""))
-                throw new InvalidInputException(sudoku_string);
+            if (sudoku_string.Equals("") || sudoku_string.Equals(" "))
+                throw new InvalidBoardInputException(sudoku_string);
             check_length(sudoku_string.Length);
             check_keys(sudoku_string, (int)Math.Pow(sudoku_string.Length, 0.5));
         }

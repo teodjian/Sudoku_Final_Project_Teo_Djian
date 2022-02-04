@@ -12,16 +12,15 @@ namespace Sudoku_Final_Project
     {
         private int option_menu()
         {
-            Console.WriteLine("enter 1 for sudoku from a file");
-            Console.WriteLine("enter 2 for sudoku from a string");
-            Console.WriteLine("enter 3 to exit");
+            Console.WriteLine("Enter 1 for sudoku from a file");
+            Console.WriteLine("Enter 2 for sudoku from a string");
+            Console.WriteLine("Enter 3 to exit");
             return Convert.ToInt32(Console.ReadKey().KeyChar)-'0';
         }
 
         public void main_menu()
         {
-            Console.SetIn(new StreamReader(Console.OpenStandardInput(8192)));
-            Solver1 solver;
+            Solver solver;
             Validation_Input validator = new Validation_Input();
             string[] lines= { };
             int option = 1;
@@ -31,44 +30,46 @@ namespace Sudoku_Final_Project
                 switch (option)
                 {
                     case 1:
-                        Console.WriteLine("\nenter the file path of the sudoku");
+                        Console.WriteLine("\nEnter the file path of the sudoku");
                         string sudoku_file_name = Console.ReadLine();
                         try {
-                             lines = File.ReadAllLines(sudoku_file_name);
+                            lines = File.ReadAllLines(sudoku_file_name);
                             validator.validation(lines[0]); // check that the string is valid for sudoku
+                            Board_Game board_from_file = init_Sudoku(lines[0], lines[0].Length);
+                            solver = new Solver(board_from_file);
+                            string SloverString = solver.SudokuSolution();
+                            Console.WriteLine("the string of the result: " + SloverString);
+                            fileSolution(sudoku_file_name, SloverString);
                         }
-                        catch (InvalidInputException)
+                        catch(FileNotFoundException)
                         {
+                            Console.WriteLine("Invalid File Path: Can't find the File");
                             break;
                         }
                         catch (Exception)
                         {
-                            Console.WriteLine("file doesnt exist");
                             break;
                         }
-                        Board_Game board_from_file = init_Sudoku(lines[0], lines[0].Length);
-                        solver = new Solver1(board_from_file);
-                        solver.solve();
                         break;
                     case 2:
-                        Console.WriteLine("\nenter the string sudoku");
+                        Console.WriteLine("\nEnter the string sudoku");
                         string sudoku = Console.ReadLine();
                         try
                         {
                           validator.validation(sudoku);
                           Board_Game board = init_Sudoku(sudoku, sudoku.Length);
-                          solver = new Solver1(board);
-                          solver.solve();
+                          solver = new Solver(board);
+                          string solution=solver.SudokuSolution();
+                          Console.WriteLine("the string of the result: " + solution);
                         }
                         catch(Exception)
                         { break;}
-                        
                         break;
                     case 3:
                         System.Environment.Exit(0);
                         break;
                     default:
-                        Console.WriteLine("\nthe key is not in the menu");
+                        Console.WriteLine("\nThe key is not in the menu");
                         break;
 
                 }
@@ -80,6 +81,19 @@ namespace Sudoku_Final_Project
             Board_Game board = new Board_Game_UI(sudoku,(int)size_of_row);
             return board;
         }        
+
+        private void fileSolution(string sudokuBoard_file_name, string SolutionBoard)
+        {
+            string fileSolutionName = sudokuBoard_file_name.Replace(".txt", "-Solution.txt");
+            if (!File.Exists(fileSolutionName))
+            {
+                using (StreamWriter sw = File.CreateText(fileSolutionName))
+                {
+                    sw.WriteLine(SolutionBoard);
+                    Console.WriteLine("The path of the solution file is " + fileSolutionName+"\n");
+                }
+            }
+        }
     }
 
 }

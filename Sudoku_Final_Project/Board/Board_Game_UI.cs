@@ -12,6 +12,10 @@ namespace Sudoku_Final_Project
         public Board_Game_UI(string str,int length_of_row) :base(str,length_of_row)
         {
         }
+        public Board_Game_UI()
+        {
+
+        }
         //sets the color of the text to white or green, used in displaying the board.
         private void color(bool flag)
         {

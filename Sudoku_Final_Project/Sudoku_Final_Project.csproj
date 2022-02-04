@@ -43,21 +43,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Tactics\Backtracking.cs" />
-    <Compile Include="Board_Game.cs" />
-    <Compile Include="Board_Game_UI.cs" />
-    <Compile Include="Board_Solver.cs" />
+    <Compile Include="Tactics\BackTracking.cs" />
+    <Compile Include="Exepction\ImpossibleSolvingException.cs" />
+    <Compile Include="Solver.cs" />
+    <Compile Include="Board\Board_Game.cs" />
+    <Compile Include="Board\Board_Game_UI.cs" />
     <Compile Include="Cell.cs" />
     <Compile Include="Exepction\InvalidBoardSizeException.cs" />
     <Compile Include="Exepction\InvalidKeyException.cs" />
-    <Compile Include="ICell.cs" />
-    <Compile Include="Exepction\InvalidInputExepction.cs" />
+    <Compile Include="Exepction\InvalidBoardInputExepction.cs" />
     <Compile Include="Kelet.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Solver1.cs" />
     <Compile Include="Tactics\HiddenSingle.cs" />
-    <Compile Include="Tactics\Masking_Tactic.cs" />
+    <Compile Include="Tactics\Intersections_Tactic.cs" />
+    <Compile Include="Tactics\Itactics.cs" />
     <Compile Include="Tactics\NakedSingle.cs" />
     <Compile Include="Tactics\Options.cs" />
     <Compile Include="Validation\Ivalid.cs" />

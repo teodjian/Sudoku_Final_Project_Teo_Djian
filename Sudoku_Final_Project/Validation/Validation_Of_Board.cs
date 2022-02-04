@@ -14,6 +14,34 @@ namespace Sudoku_Final_Project.Validation
         {
             _board = board;
         }
+        public bool Validate(int time)
+        {
+            for (int row = 0; row < _board._length_of_row; row++)
+            {
+                for (int col = 0; col < _board._length_of_row; col++)
+                {
+                    Cell thisCell = _board._Cell_board[row, col];
+                    if (!thisCell.HasValue())
+                    {
+                        if (thisCell.NumOfOptions == 0)
+                        {
+                            if (time == 0)
+                                throw new InvalidBoardInputException();
+                            else
+                                return false;
+                        }
+                    }
+                    else if (!ValidInPlace(thisCell.Value, row, col))
+                    {
+                        if (time == 0)
+                            throw new InvalidBoardInputException();
+                        else
+                            return false;
+                    }
+                }
+            }
+            return true;
+        }
         public bool AppearInRow(int num, int row)
         {
             int count = 0;
@@ -76,28 +104,7 @@ namespace Sudoku_Final_Project.Validation
                    AppearInBox(num, row, col);
         }
 
-        public bool Validate()
-        {
-            for (int row = 0; row < _board._length_of_row; row++)
-            {
-                for (int col = 0; col < _board._length_of_row; col++)
-                {
-                    Cell thisCell = _board._Cell_board[row, col];
-                    if (!thisCell.HasValue())
-                    {
-                        if (thisCell.NumOfOptions == 0)
-                        {
-                            throw new InvalidInputException();
-                        }
-                    }
-                    else if (!ValidInPlace(thisCell.Value, row, col))
-                    {
-                        throw new InvalidInputException();
-                    }
-                }
-            }
-            return true;
-        }
+        
 
         public bool IsValidPlace(int num, int row, int col)
         {
