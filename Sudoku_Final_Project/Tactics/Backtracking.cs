@@ -25,7 +25,7 @@ namespace Sudoku_Final_Project
         {
             if (treeLevel > 4 && !lastOption) 
                 return false;
-            if (treeLevel > _board._length_of_row+13 && lastOption)
+            if (treeLevel > _board._length_of_row+1 && lastOption)
                 return false;
             if (row == _board._length_of_row - 1 && col == _board._length_of_row)
                 return true;

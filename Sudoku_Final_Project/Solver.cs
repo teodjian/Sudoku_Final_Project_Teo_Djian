@@ -28,6 +28,23 @@ namespace Sudoku_Final_Project
                                                         // The cell itself has more than one option left, the correct number is thus hidden amongst the rest.
         }
 
+
+        // call the solving algorithem and return the solution as string, if there is not solution will throw  Impossible Solving Exception
+        public string SudokuSolution()
+        {
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+            if (!SolveSudoku())
+                throw new ImpossibleSolvingException();
+            else
+            {
+                _board.displayboard(); // will display the board with the solution
+                stopwatch.Stop();
+                Console.WriteLine("Successful solving after: " + stopwatch.ElapsedMilliseconds + " milliseconds\n");
+            }
+            return _board.board_to_string();
+        }
+
         // the function search the cell in the board with the least options and return by ref the row and col of this cell with the least of options.
         private int BestEmptyCell(ref int rowOfTheBestOption, ref int colOfTheBestOption)
         {
@@ -55,16 +72,18 @@ namespace Sudoku_Final_Project
         // human tactics try to solve the board with fanous tactics and find the solution.
         private void HumanTactics()
         {
-            List<bool> findPosiibleSlovedCell;
-            do 
+            List<bool> findPosiibleSlovedCell = new List<bool>();
+            findPosiibleSlovedCell.Add(true);
+            while (findPosiibleSlovedCell.Contains(true))
             {
+                // while the tactics find celles that suitable with there meaning/ rules
+                // the humans tactics will conitune to call if the board is stack, or sloved the loop will stop.
                 findPosiibleSlovedCell = new List<bool>();
                 foreach (Itactics tactic in _Humantactics)
                 {
                     findPosiibleSlovedCell.Add(tactic.tryToSolve());
                 }
-            } while (findPosiibleSlovedCell.Contains(true)); // while the tactics find celles that suitable with there meaning/ rules
-                                                             // the humans tactics will conitune to call if the board is stack, or sloved the loop will stop.
+            }
         }
 
         /* the main algorithem of the sudoku solver.
@@ -82,7 +101,7 @@ namespace Sudoku_Final_Project
         private bool SolveSudoku()
         {
             Board_Game ForBacktracking = (Board_Game)_board.Clone(); // because the BackTracking will may not find the solution
-                                                                     // i dont want that he will change the main board 
+                                                                     // i dont want that that will change the main board 
             BackTracking backtracking = new BackTracking(ForBacktracking);
             
             if (_board._numberOfPlacesInSquare < 4 && backtracking.BacktrackingSolve(0, 0, 0,false))
@@ -95,7 +114,7 @@ namespace Sudoku_Final_Project
             }
             else
             {
-                HumanTactics();
+                HumanTactics(); // try to solve the board with human tactics
                 Validation_Of_Board validator = new Validation_Of_Board(_board);
                 int thisRow = -1, thisCol = -1; // init the variable with an illogical number
                 if (!validator.Validate(1)) // check that the board is valid, and Does not violate the rules of sudoku,
@@ -128,32 +147,12 @@ namespace Sudoku_Final_Project
                     thisCell.Value = guess; // make a guess on the current board
                     _board.RemoveTheOption(guess, thisRow, thisCol); // update the options on the board according to the guess
                     if (SolveSudoku()) // for the recursive solution 
-                    {
                         return true;
-                    }
                     _board = (Board_Game)clonedBoard.Clone(); // the guess was correct so we can change the main board.  
                     thisCell = _board._Cell_board[thisRow, thisCol];
                 }
             }
             return false; // can't solve this board
-        }
-
-        // call the solving algorithem and return the solution as string
-        public string SudokuSolution()
-        {
-            Stopwatch stopwatch = new Stopwatch();
-            stopwatch.Start();
-            if (!SolveSudoku())
-            {
-                throw new ImpossibleSolvingException(); // hopefully will not happen beacuse every valid board has at least one solution 
-            }
-            else
-            {
-                _board.displayboard(); // will display the board with the solution
-                stopwatch.Stop();
-                Console.WriteLine("Successful solving after: " + stopwatch.ElapsedMilliseconds + " milliseconds\n");
-            }
-            return _board.board_to_string();
         }
     }
 }
