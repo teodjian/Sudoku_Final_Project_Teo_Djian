@@ -8,12 +8,15 @@ namespace Sudoku_Final_Project.Exepction
 {
     class InvalidBoardInputException : Exception
     {
+
         public InvalidBoardInputException() : base(message())
         {
+            // custom Exception that used if found the same number twice in an element (row, column, square)
             Console.WriteLine(message());
         }
         public InvalidBoardInputException(string s) : base(message(s))
         {
+            // custom Exception that used if the string is null
             Console.WriteLine(message(s));
         }
         public static string message()
@@ -22,7 +25,7 @@ namespace Sudoku_Final_Project.Exepction
         }
         public static string message(string s)
         {
-            return "Invalid Input Exception: the string is null"+ s;
+            return "Invalid Input Exception: the string is null";
         }
 
     }

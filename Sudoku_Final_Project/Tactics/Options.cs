@@ -15,12 +15,14 @@ namespace Sudoku_Final_Project.Tactics
             _board = board;
         }
 
+        // call the functions for remove in the same time the option from the row col and squre. 
         public void RemoveOption(int num, int row, int col)
         {
             RemoveFrom_(num, row,"row");
             RemoveFrom_(num, col,"col");
             RemoveFromSquare(num, row, col);
         }
+        // the function remove the option from all the celles in his square.
         private void RemoveFromSquare(int option, int row, int col)
         {
             int SquareCol = col - (col % _board._numberOfPlacesInSquare);
@@ -37,6 +39,8 @@ namespace Sudoku_Final_Project.Tactics
                 }
             }
         }
+        // the function get an option and remove this option from all his row if colOrrow is "row" and
+        //remove this option from all his col if colOrrow is "col"
         private void RemoveFrom_(int option, int j,string colOrrow)
         {
             Cell thisCell = null;
@@ -53,6 +57,8 @@ namespace Sudoku_Final_Project.Tactics
                 }
             }
         }
+
+        // the function enter for every cell all the option that he can have.
         public void EnterOptionsToCell()
         {
             for (int i = 0; i < _board._length_of_row; i++)
@@ -67,6 +73,9 @@ namespace Sudoku_Final_Project.Tactics
                 }
             }
         }
+
+        // this function remove the from the square the specific option but without the celles in the row when forColOrRow is "row"
+        // and without the celles in the col when forColOrRow is "col". return true if the option have been remove at least once.
         public bool RemoveFromSquareWithOut_(int option, int row, int col, string forColOrRow)
         {
             bool removeOption = false;

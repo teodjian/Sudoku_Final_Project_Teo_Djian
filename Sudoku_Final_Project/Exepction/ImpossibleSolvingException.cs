@@ -8,6 +8,7 @@ namespace Sudoku_Final_Project.Exepction
 {
     class ImpossibleSolvingException : Exception
     {
+        // custom Exception that used if the solving algorithem can't find a solution.
         public ImpossibleSolvingException() : base(message())
         {
             Console.WriteLine(message());

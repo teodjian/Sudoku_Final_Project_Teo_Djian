@@ -19,10 +19,13 @@ namespace Sudoku_Final_Project.Tactics
             return HiddenSingleSolve();
         }
 
+        // single call single in row col and square to see if there is an option that is only once in the row col and Sqaure,
+        // return true if there is a number like that
         private bool Single(int num, int row, int col)
         {
             return SingleIn_(num, row, "row") || SingleIn_(num, col, "col") || SingleInSquare(num, row, col);
         }
+        // the function check if the number option is only once in the Square
         private bool SingleInSquare(int num, int row, int col)
         {
             int counter = 0;
@@ -45,6 +48,10 @@ namespace Sudoku_Final_Project.Tactics
             }
             return false;
         }
+
+        // The definition of a hidden single is when a option is the only one of its kind in an entire row, column, or square.
+        // the function search if there is a number in one of celles that have an option that is not in his row, col or square 
+        // if yes the option become the value of the cell and return true, if there no cell like that return false.
         public bool HiddenSingleSolve()
         {
             int counter = 0;
@@ -75,8 +82,9 @@ namespace Sudoku_Final_Project.Tactics
             return (counter > 0);
         }
 
-        // SingleIn_ depened in the string, if the string colOrrow is col so the function check if there is a single in col and if the string
-        // is row so the function check if there is a single in row
+        // SingleIn_ depened in the string, if the string colOrrow is col so the function check if there is an option that is only once in col
+        // and if the string is row so the function check if there is an option that is only once in row
+        // 
         private bool SingleIn_(int num, int j, string colOrrow)
         {
             Cell thisCell = null;

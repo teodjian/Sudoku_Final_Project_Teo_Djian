@@ -17,6 +17,12 @@ namespace Sudoku_Final_Project.Tactics
         {
             return Intersections_Solve();
         }
+
+        // Intersections mean that If in a block all options of a certain number are confined to a row or column,
+        // that number cannot appear outside of that square in that row or col. or If in a row (or column)
+        // all options of a certain number are confined to one square, that option that be eliminated from all other cells in that square.
+        // the function for every cell check for every option if a case like that can happed,
+        // if yes the function update the options for the cell and return true
         public bool Intersections_Solve()
             {
                 for (int i = 0; i < _board._length_of_row; i++)

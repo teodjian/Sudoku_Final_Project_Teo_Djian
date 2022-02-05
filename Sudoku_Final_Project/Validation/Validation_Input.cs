@@ -10,9 +10,10 @@ namespace Sudoku_Final_Project
 {
     class Validation_Input: Ivalid
     {
+        //function that call Other functions that check that the length and keys are suitable for sudoku
         public void validation(string sudoku_string)
         {
-            if (sudoku_string.Equals("") || sudoku_string.Equals(" "))
+            if (sudoku_string.Equals("") || sudoku_string.Equals(" ")) // if the string is null, will be written an appropriate exception 
                 throw new InvalidBoardInputException(sudoku_string);
             check_length(sudoku_string.Length);
             check_keys(sudoku_string, (int)Math.Pow(sudoku_string.Length, 0.5));
@@ -21,7 +22,7 @@ namespace Sudoku_Final_Project
         public void check_length(int length)
         {
             double size = Math.Pow(length, 0.5);
-            if (Math.Pow(size, 0.5) % 1 != 0)
+            if (Math.Pow(size, 0.5) % 1 != 0) // valid length of sudoku is if the second root of the length is without rest 
             {
                 Console.WriteLine("youre number is no valid, Not suitable for sudoku sizes");
                 throw new InvalidBoardSizeException(length);
@@ -36,7 +37,6 @@ namespace Sudoku_Final_Project
                 value = chr - '0';
                 if (value < 0 || value > size)
                 {
-                    Console.WriteLine("in your input there is not only numbers");
                     throw new InvalidKeyException(chr, size);
                 }
             }

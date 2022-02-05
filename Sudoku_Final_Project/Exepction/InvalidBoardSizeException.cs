@@ -8,6 +8,7 @@ namespace Sudoku_Final_Project.Exepction
 {
     class InvalidBoardSizeException : Exception
     {
+        // custom Exception that used if the length of the board is not suitable for sudoku sizes
         public InvalidBoardSizeException(int length) : base(message(length))
         {
             Console.WriteLine(message(length));

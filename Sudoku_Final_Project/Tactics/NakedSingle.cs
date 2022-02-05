@@ -9,7 +9,6 @@ namespace Sudoku_Final_Project.Tactics
     class NakedSingle: Itactics
     {
         Board_Game _board;
-
         public NakedSingle(Board_Game board)
         {
             _board = board;
@@ -18,6 +17,10 @@ namespace Sudoku_Final_Project.Tactics
         {
             return NakedSingleSolver();
         }
+        
+        //Naked Single means that if in a specific cell only one option remains possible, The option must be the value of this cell.
+        // the function run on all the celles and if there is a cell, with one option the option become the value, and the option is removed from his
+        // row, col, and square, return true if there was more then one or more cell like that, else false.
         public bool NakedSingleSolver()
         {
             int counter = 0;

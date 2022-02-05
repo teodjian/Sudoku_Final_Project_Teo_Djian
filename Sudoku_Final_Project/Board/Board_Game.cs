@@ -10,8 +10,8 @@ namespace Sudoku_Final_Project
 {
     abstract class Board_Game: ICloneable
     {  
-        public int _length_of_row { get; set; }
-        public int _numberOfPlacesInSquare { get; set; }
+        public int _length_of_row { get; set; }  // length of the row in the board
+        public int _numberOfPlacesInSquare { get; set; } // length of the row in the square in the board
         public Cell[,] _Cell_board;
         public Options options;
 
@@ -29,8 +29,10 @@ namespace Sudoku_Final_Project
         {
 
         }
-        public abstract void displayboard();
 
+        // the dispaly will be in the board_game_ui.
+        public abstract void displayboard();
+        // the init board get a string and put every char of the string in his cell.
         public void init_board(string board_str)
         {
             Validation_Of_Board vob = new Validation_Of_Board(this);
@@ -39,26 +41,32 @@ namespace Sudoku_Final_Project
                 for (int j = 0; j < _length_of_row; j++)
                 {
                     int currValue = board_str[i * _length_of_row + j]-'0';
-                    _Cell_board[i, j] = new Cell(currValue, _length_of_row,i,j,_numberOfPlacesInSquare);
+                    _Cell_board[i, j] = new Cell(currValue, _length_of_row,i,j,_numberOfPlacesInSquare); // create the cell with the the information of the char.
                 }
             }
-            displayboard();
-            vob.Validate(0);
+            displayboard(); // display the board that we get
+            vob.Validate(0); // check that the board is valid, the 0 is if the board is not valid , an invalid board input exception is throw
+                             // and dont continue to try slove the board
         }
+        // the option is removed from the row, col the square of the cell
         public void RemoveTheOption(int option, int row, int col)
         {
             Options options = new Options(this);
             options.RemoveOption(option, row, col);
         }
+        // put to every cell the options that he can have.
         public void InitTheOptions()
         {
             options.EnterOptionsToCell();
         }
-
+        // the function call to the function from options that remove from the square the option, but dont change the row or the col depend in the string colOrrow,
+        // if "row" dont change the row for the square if "col"  dont change the col for the square
         public bool RemoveFromSquareWithOut(int option, int row, int col,string colOrrow)
         {
             return options.RemoveFromSquareWithOut_(option, row, col, colOrrow);
         }
+        
+        // function that check if every cell has value, return true if yes, else return false.
         public bool isBoardSloved()
         {
             for (int i = 0; i < _length_of_row; i++)
@@ -72,6 +80,7 @@ namespace Sudoku_Final_Project
             return true;
         }
 
+        // the board is changed to string.
         public string board_to_string()
         {
             string str = "";
@@ -84,6 +93,7 @@ namespace Sudoku_Final_Project
             }
             return str;
         }
+        // copy this board to a new board with the same Properties.
         public object Clone()
         {
             Board_Game Cloned = new Board_Game_UI();
