@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Sudoku_Final_Project.Tactics
 {
-    class Options
+    public class Options
     {
         Board_Game _board;
 

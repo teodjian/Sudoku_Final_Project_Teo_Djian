@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Sudoku_Final_Project
 {
-    class BackTracking
+    public class BackTracking
     {
 
         public Board_Game _board;

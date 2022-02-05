@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Sudoku_Final_Project.Tactics
 {
-    class Intersections_Tactic: Itactics
+    public class Intersections_Tactic: Itactics
     {
            private Board_Game _board;
         public Intersections_Tactic(Board_Game board)
@@ -50,7 +50,8 @@ namespace Sudoku_Final_Project.Tactics
             }
 
         // IntersectionIn_ depened in the string, if the string colOrrow is col so the function check if there is intersection in col and if the string
-        // is row so the function check if there is intersection in row
+        // is row so the function check if there is intersection in row. function check if the option was more than once in the col/row and all was in the 
+        // same square, if yes return true else false.
         public bool IntersectionIn_(int option, int j,string colOrrow)
             {
                 Cell thisCell=null;
@@ -79,6 +80,7 @@ namespace Sudoku_Final_Project.Tactics
                 }
                 return (counter > 1);
             }
-         
+
+
         }
-}
+    }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Sudoku_Final_Project
 {
-    class Cell: ICloneable
+    public class Cell: ICloneable
     {
         private int _row { get; set; }
         private int _value;

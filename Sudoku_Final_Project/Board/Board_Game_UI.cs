@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Sudoku_Final_Project
 {
-    class Board_Game_UI : Board_Game
+    public class Board_Game_UI : Board_Game
     {
 
         public Board_Game_UI(string str,int length_of_row) :base(str,length_of_row)

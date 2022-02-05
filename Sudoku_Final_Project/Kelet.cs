@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Sudoku_Final_Project
 {
-    class Kelet
+    public class Kelet
     {
         // function that propose to the user the options of the code, and return the number of the key that the user put.
         private int option_menu()

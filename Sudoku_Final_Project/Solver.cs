@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Sudoku_Final_Project
 {
-    class Solver
+    public class Solver
     {
         private ICollection<Itactics> _Humantactics;
         private Board_Game _board;
@@ -48,7 +48,7 @@ namespace Sudoku_Final_Project
         // the function search the cell in the board with the least options and return by ref the row and col of this cell with the least of options.
         private int BestEmptyCell(ref int rowOfTheBestOption, ref int colOfTheBestOption)
         {
-            int BestOption = -5; // init the variable with an illogical number
+            int BestOption = _board._length_of_row+1; // init the variable with an illogical number
             Cell thisCell = null;
             for (int i = 0; i < _board._length_of_row; i++) // run on all the celles in the board
             {
@@ -57,7 +57,7 @@ namespace Sudoku_Final_Project
                     thisCell = _board._Cell_board[i, j]; 
                     if (!thisCell.HasValue()) // check that is cell is empty
                     {
-                        if (BestOption == -5 || thisCell.NumOfOptions < BestOption)
+                        if (thisCell.NumOfOptions < BestOption)
                         {
                             BestOption = thisCell.NumOfOptions;
                             rowOfTheBestOption = i;
@@ -98,7 +98,7 @@ namespace Sudoku_Final_Project
          * 3.3 try the next option (3)
          * 4. try number 3 again 
         */ 
-        private bool SolveSudoku()
+        public bool SolveSudoku()
         {
             Board_Game ForBacktracking = (Board_Game)_board.Clone(); // because the BackTracking will may not find the solution
                                                                      // i dont want that that will change the main board 
@@ -117,7 +117,7 @@ namespace Sudoku_Final_Project
                 HumanTactics(); // try to solve the board with human tactics
                 Validation_Of_Board validator = new Validation_Of_Board(_board);
                 int thisRow = -1, thisCol = -1; // init the variable with an illogical number
-                if (!validator.Validate(1)) // check that the board is valid, and Does not violate the rules of sudoku,
+                if (!validator.ValidationOfBoard(1)) // check that the board is valid, and Does not violate the rules of sudoku,
                                             // the one say that it is not the first board that is checked, to not throw  wrong exception
                     return false;
                 if (_board.isBoardSloved()) // check if the board is sloved and there is not empty cells

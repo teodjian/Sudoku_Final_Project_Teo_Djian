@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Sudoku_Final_Project.Tactics
 {
-    class HiddenSingle: Itactics
+    public class HiddenSingle: Itactics
     {
         public Board_Game _board { get; set; }
 

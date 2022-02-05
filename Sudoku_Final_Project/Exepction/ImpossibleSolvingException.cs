@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Sudoku_Final_Project.Exepction
 {
-    class ImpossibleSolvingException : Exception
+    public class ImpossibleSolvingException : Exception
     {
         // custom Exception that used if the solving algorithem can't find a solution.
         public ImpossibleSolvingException() : base(message())

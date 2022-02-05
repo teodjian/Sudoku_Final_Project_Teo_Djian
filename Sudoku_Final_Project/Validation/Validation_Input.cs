@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Sudoku_Final_Project
 {
-    class Validation_Input: Ivalid
+    public class Validation_Input: Ivalid
     {
         //function that call Other functions that check that the length and keys are suitable for sudoku
         public void validation(string sudoku_string)

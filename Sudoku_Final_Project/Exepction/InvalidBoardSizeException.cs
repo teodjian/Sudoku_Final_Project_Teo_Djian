@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Sudoku_Final_Project.Exepction
 {
-    class InvalidBoardSizeException : Exception
+    public class InvalidBoardSizeException : Exception
     {
         // custom Exception that used if the length of the board is not suitable for sudoku sizes
         public InvalidBoardSizeException(int length) : base(message(length))

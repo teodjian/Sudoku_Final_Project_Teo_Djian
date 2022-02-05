@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Sudoku_Final_Project.Exepction
 {
-    class InvalidBoardInputException : Exception
+    public class InvalidBoardInputException : Exception
     {
 
         public InvalidBoardInputException() : base(message())

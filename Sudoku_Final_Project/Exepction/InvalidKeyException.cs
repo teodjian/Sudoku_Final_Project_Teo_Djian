@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Sudoku_Final_Project.Exepction
 {
-    class InvalidKeyException : Exception
+    public class InvalidKeyException : Exception
     {
         // custom Exception that used when a function find invalid key in the string for sudoku.
         public InvalidKeyException(char chr, int length) : base(message(chr, length))

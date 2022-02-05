@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Sudoku_Final_Project.Tactics
 {
-    class NakedSingle: Itactics
+    public class NakedSingle: Itactics
     {
         Board_Game _board;
         public NakedSingle(Board_Game board)

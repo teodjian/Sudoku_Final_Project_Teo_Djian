@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Sudoku_Final_Project.Validation
 {
-    class Validation_Of_Board
+    public class Validation_Of_Board
     {
         private Board_Game _board;
         public Validation_Of_Board(Board_Game board)
@@ -19,7 +19,7 @@ namespace Sudoku_Final_Project.Validation
         // is after getting the board from the user, so if the board is not valid, InvalidBoardInputException will be throw,
         // if this board is valid the function will return true. "time" not 0, is when i get a board after the solving algorithem "guess" a number,
         // so if its not correct will return false (because the board is correct but not the guess), and correct true.
-        public bool Validate(int time)
+        public bool ValidationOfBoard(int time)
         {
             for (int row = 0; row < _board._length_of_row; row++)
             {

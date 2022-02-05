@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Sudoku_Final_Project
 {
-    abstract class Board_Game: ICloneable
+    public abstract class Board_Game: ICloneable
     {  
         public int _length_of_row { get; set; }  // length of the row in the board
         public int _numberOfPlacesInSquare { get; set; } // length of the row in the square in the board
@@ -45,7 +45,7 @@ namespace Sudoku_Final_Project
                 }
             }
             displayboard(); // display the board that we get
-            vob.Validate(0); // check that the board is valid, the 0 is if the board is not valid , an invalid board input exception is throw
+            vob.ValidationOfBoard(0); // check that the board is valid, the 0 is if the board is not valid , an invalid board input exception is throw
                              // and dont continue to try slove the board
         }
         // the option is removed from the row, col the square of the cell
