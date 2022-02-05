@@ -1,0 +1,17 @@
+E:\C#\Sudoku_Final_Project\Sudoku_Final_Project.UnitTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+E:\C#\Sudoku_Final_Project\Sudoku_Final_Project.UnitTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+E:\C#\Sudoku_Final_Project\Sudoku_Final_Project.UnitTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+E:\C#\Sudoku_Final_Project\Sudoku_Final_Project.UnitTests\bin\Debug\Sudoku_Final_Project.UnitTests.dll
+E:\C#\Sudoku_Final_Project\Sudoku_Final_Project.UnitTests\bin\Debug\Sudoku_Final_Project.UnitTests.pdb
+E:\C#\Sudoku_Final_Project\Sudoku_Final_Project.UnitTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+E:\C#\Sudoku_Final_Project\Sudoku_Final_Project.UnitTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+E:\C#\Sudoku_Final_Project\Sudoku_Final_Project.UnitTests\bin\Debug\Sudoku_Final_Project.exe
+E:\C#\Sudoku_Final_Project\Sudoku_Final_Project.UnitTests\bin\Debug\Sudoku_Final_Project.pdb
+E:\C#\Sudoku_Final_Project\Sudoku_Final_Project.UnitTests\bin\Debug\Sudoku_Final_Project.exe.config
+E:\C#\Sudoku_Final_Project\Sudoku_Final_Project.UnitTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
+E:\C#\Sudoku_Final_Project\Sudoku_Final_Project.UnitTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+E:\C#\Sudoku_Final_Project\Sudoku_Final_Project.UnitTests\obj\Debug\Sudoku_Final_Project.UnitTests.csproj.AssemblyReference.cache
+E:\C#\Sudoku_Final_Project\Sudoku_Final_Project.UnitTests\obj\Debug\Sudoku_Final_Project.UnitTests.csproj.CoreCompileInputs.cache
+E:\C#\Sudoku_Final_Project\Sudoku_Final_Project.UnitTests\obj\Debug\Sudoku_Final_Project.UnitTests.csproj.CopyComplete
+E:\C#\Sudoku_Final_Project\Sudoku_Final_Project.UnitTests\obj\Debug\Sudoku_Final_Project.UnitTests.dll
+E:\C#\Sudoku_Final_Project\Sudoku_Final_Project.UnitTests\obj\Debug\Sudoku_Final_Project.UnitTests.pdb
