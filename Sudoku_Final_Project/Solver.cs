@@ -51,6 +51,7 @@ namespace Sudoku_Final_Project
             }
             return BestOption;
         }
+
         // human tactics try to solve the board with fanous tactics and find the solution.
         private void HumanTactics()
         {
@@ -65,6 +66,7 @@ namespace Sudoku_Final_Project
             } while (findPosiibleSlovedCell.Contains(true)); // while the tactics find celles that suitable with there meaning/ rules
                                                              // the humans tactics will conitune to call if the board is stack, or sloved the loop will stop.
         }
+
         /* the main algorithem of the sudoku solver.
          * 1. if the board is 9x9 or smaller try to solve with BackTracking algorithem
          * 1.1 if return true, the board is solved

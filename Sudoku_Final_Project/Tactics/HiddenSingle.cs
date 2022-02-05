@@ -84,7 +84,6 @@ namespace Sudoku_Final_Project.Tactics
 
         // SingleIn_ depened in the string, if the string colOrrow is col so the function check if there is an option that is only once in col
         // and if the string is row so the function check if there is an option that is only once in row
-        // 
         private bool SingleIn_(int num, int j, string colOrrow)
         {
             Cell thisCell = null;

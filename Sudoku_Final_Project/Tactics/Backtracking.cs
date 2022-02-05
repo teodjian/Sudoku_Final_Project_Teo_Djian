@@ -49,6 +49,7 @@ namespace Sudoku_Final_Project
             }
             return false;
         }
+
         // is safe check that the board is not Violates sudoku rules, return true if it is ok. 
         private bool isSafe(int row, int col, int num)
         {
